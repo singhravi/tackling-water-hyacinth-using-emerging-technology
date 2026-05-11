@@ -1,0 +1,410 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --teal:#0F6E56;--teal-light:#E1F5EE;--teal-mid:#1D9E75;
+  --amber:#BA7517;--amber-light:#FAEEDA;
+  --coral:#993C1D;--coral-light:#FAECE7;
+  --green:#3B6D11;--green-light:#EAF3DE;
+  --blue:#185FA5;--blue-light:#E6F1FB;
+  --display:'Playfair Display',Georgia,serif;
+  --body:'DM Sans',sans-serif;
+}
+body{font-family:var(--body);background:transparent;color:var(--color-text-primary)}
+
+.hero{background:var(--teal);border-radius:var(--border-radius-lg);padding:2.5rem 2rem 2rem;margin-bottom:1.5rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;border-radius:50%;border:40px solid rgba(255,255,255,0.07)}
+.hero::after{content:'';position:absolute;bottom:-60px;right:60px;width:140px;height:140px;border-radius:50%;border:30px solid rgba(255,255,255,0.05)}
+.hero-badge{display:inline-block;background:rgba(255,255,255,0.15);color:#9FE1CB;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:1rem}
+.hero h1{font-family:var(--display);font-size:26px;font-weight:700;color:#fff;line-height:1.3;margin-bottom:.75rem;max-width:480px}
+.hero p{color:rgba(255,255,255,0.75);font-size:14px;line-height:1.7;max-width:500px;margin-bottom:1.5rem}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.1);border-radius:10px;overflow:hidden}
+.stat-cell{background:rgba(0,0,0,0.15);padding:.875rem 1rem;text-align:center}
+.stat-num{font-family:var(--display);font-size:22px;font-weight:700;color:#5DCAA5;display:block}
+.stat-lbl{font-size:11px;color:rgba(255,255,255,0.6);margin-top:2px}
+
+.section-title{font-family:var(--display);font-size:18px;font-weight:700;color:var(--color-text-primary);margin-bottom:.25rem}
+.section-sub{font-size:13px;color:var(--color-text-secondary);margin-bottom:1.25rem;line-height:1.6}
+
+.tech-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.875rem;margin-bottom:1.5rem}
+.tech-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;position:relative;overflow:hidden}
+.tech-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%}
+.tc-teal::before{background:var(--teal)}
+.tc-amber::before{background:var(--amber)}
+.tc-blue::before{background:var(--blue)}
+.tc-green::before{background:var(--green)}
+.tc-coral::before{background:var(--coral)}
+.tc-purple::before{background:#534AB7}
+
+.tech-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:.875rem;font-size:18px}
+.ic-teal{background:var(--teal-light);color:var(--teal)}
+.ic-amber{background:var(--amber-light);color:var(--amber)}
+.ic-blue{background:var(--blue-light);color:var(--blue)}
+.ic-green{background:var(--green-light);color:var(--green)}
+.ic-coral{background:var(--coral-light);color:var(--coral)}
+.ic-purple{background:#EEEDFE;color:#534AB7}
+
+.tech-card h3{font-size:13px;font-weight:600;color:var(--color-text-primary);margin-bottom:.375rem}
+.tech-card p{font-size:12px;color:var(--color-text-secondary);line-height:1.6;margin-bottom:.75rem}
+.tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;margin-right:4px;margin-top:2px}
+.tag-teal{background:var(--teal-light);color:var(--teal)}
+.tag-amber{background:var(--amber-light);color:var(--amber)}
+.tag-blue{background:var(--blue-light);color:var(--blue)}
+.tag-green{background:var(--green-light);color:var(--green)}
+.tag-coral{background:var(--coral-light);color:var(--coral)}
+.tag-purple{background:#EEEDFE;color:#534AB7}
+
+.economy-section{margin-bottom:1.5rem}
+.economy-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;align-items:stretch;margin-bottom:1rem}
+.eco-node{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:.875rem .75rem;text-align:center;position:relative}
+.eco-node i{font-size:22px;margin-bottom:.5rem;display:block}
+.eco-node .node-title{font-size:12px;font-weight:600;color:var(--color-text-primary);margin-bottom:.25rem}
+.eco-node .node-desc{font-size:10px;color:var(--color-text-secondary);line-height:1.5}
+.eco-arrow{display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--color-text-secondary)}
+
+.by-products{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1.5rem}
+.bp-card{border-radius:var(--border-radius-md);padding:.875rem;text-align:center}
+.bp-teal{background:var(--teal-light)}
+.bp-amber{background:var(--amber-light)}
+.bp-green{background:var(--green-light)}
+.bp-card i{font-size:20px;margin-bottom:.5rem;display:block}
+.bp-teal i{color:var(--teal)}
+.bp-amber i{color:var(--amber)}
+.bp-green i{color:var(--green)}
+.bp-card .bp-title{font-size:12px;font-weight:600;margin-bottom:.25rem}
+.bp-teal .bp-title{color:var(--teal)}
+.bp-amber .bp-title{color:var(--amber)}
+.bp-green .bp-title{color:var(--green)}
+.bp-card .bp-rev{font-size:11px;font-weight:600;margin-bottom:.2rem}
+.bp-teal .bp-rev{color:var(--teal)}
+.bp-amber .bp-rev{color:var(--amber)}
+.bp-green .bp-rev{color:var(--green)}
+.bp-card .bp-desc{font-size:10px;color:var(--color-text-secondary);line-height:1.5}
+
+.roadmap{margin-bottom:1.5rem}
+.phase{display:flex;gap:1rem;margin-bottom:1rem;position:relative}
+.phase-connector{position:absolute;left:22px;top:44px;bottom:-14px;width:2px;background:var(--color-border-tertiary)}
+.phase:last-child .phase-connector{display:none}
+.phase-badge{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;border:2px solid}
+.pb-1{background:var(--teal-light);color:var(--teal);border-color:var(--teal)}
+.pb-2{background:var(--amber-light);color:var(--amber);border-color:var(--amber)}
+.pb-3{background:var(--blue-light);color:var(--blue);border-color:var(--blue)}
+.pb-4{background:var(--green-light);color:var(--green);border-color:var(--green)}
+.phase-content{flex:1;background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem}
+.phase-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem}
+.phase-title{font-size:13px;font-weight:600;color:var(--color-text-primary)}
+.phase-time{font-size:11px;font-weight:600;padding:2px 10px;border-radius:20px}
+.pt-1{background:var(--teal-light);color:var(--teal)}
+.pt-2{background:var(--amber-light);color:var(--amber)}
+.pt-3{background:var(--blue-light);color:var(--blue)}
+.pt-4{background:var(--green-light);color:var(--green)}
+.phase-items{display:flex;flex-wrap:wrap;gap:.375rem;margin-top:.5rem}
+.phase-item{font-size:11px;color:var(--color-text-secondary);background:var(--color-background-secondary);padding:2px 8px;border-radius:4px}
+
+.cost-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1.5rem}
+.cost-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem}
+.cost-card h4{font-size:13px;font-weight:600;margin-bottom:.875rem;padding-bottom:.625rem;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary)}
+.cost-row{display:flex;justify-content:space-between;align-items:center;padding:.3rem 0;font-size:12px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.cost-row:last-child{border-bottom:none;font-weight:600}
+.cost-label{color:var(--color-text-secondary)}
+.cost-value{font-weight:500;color:var(--color-text-primary)}
+.cost-total{color:var(--teal);font-size:13px}
+
+.benefit-bar-wrap{margin-bottom:.625rem}
+.bar-label{display:flex;justify-content:space-between;font-size:11px;color:var(--color-text-secondary);margin-bottom:.25rem}
+.bar-track{height:8px;background:var(--color-background-secondary);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;transition:width .8s ease}
+.bf-teal{background:var(--teal)}
+.bf-amber{background:var(--amber)}
+.bf-blue{background:var(--blue)}
+.bf-green{background:var(--green)}
+
+.states-section{margin-bottom:1.5rem}
+.states-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+.state-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.875rem}
+.state-name{font-size:13px;font-weight:600;color:var(--color-text-primary);margin-bottom:.375rem;display:flex;align-items:center;gap:.375rem}
+.state-severity{font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px}
+.sev-high{background:#FCEBEB;color:#A32D2D}
+.sev-med{background:var(--amber-light);color:var(--amber)}
+.state-body{font-size:11px;color:var(--color-text-secondary);line-height:1.5}
+
+.footer-note{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem 1.25rem;font-size:12px;color:var(--color-text-secondary);line-height:1.7;display:flex;gap:.75rem;align-items:flex-start}
+.footer-note i{font-size:16px;color:var(--teal);margin-top:2px;flex-shrink:0}
+
+.divider{height:0.5px;background:var(--color-border-tertiary);margin:1.5rem 0}
+</style>
+
+<h2 class="sr-only" style="position:absolute;left:-9999px">Water Hyacinth Management in India: Emerging Technology Solutions</h2>
+
+<div class="hero">
+  <div class="hero-badge"><i class="ti ti-leaf" aria-hidden="true"></i> National Aquatic Weed Challenge</div>
+  <h1>Tackling Water Hyacinth in India with Emerging Technology</h1>
+  <p>A comprehensive, economically viable framework integrating AI, robotics, IoT, and circular economy principles to manage Eichhornia crassipes across India's water bodies.</p>
+  <div class="hero-stats">
+    <div class="stat-cell">
+      <span class="stat-num">2.2M+</span>
+      <span class="stat-lbl">Hectares affected</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">₹4,800Cr</span>
+      <span class="stat-lbl">Annual economic loss</span>
+    </div>
+    <div class="stat-cell">
+      <span class="stat-num">18+</span>
+      <span class="stat-lbl">States impacted</span>
+    </div>
+  </div>
+</div>
+
+<div class="section-title">Why water hyacinth is a crisis</div>
+<div class="section-sub">Introduced in India in the 1800s as an ornamental plant, Eichhornia crassipes now ranks among the world's worst invasive aquatic weeds. It doubles its coverage every 11–15 days, depletes dissolved oxygen, blocks sunlight, destroys fisheries, chokes irrigation canals, and disrupts navigation — disproportionately affecting farming and fishing communities in Bihar, Bengal, Assam, Kerala, and Uttarakhand.</div>
+
+<div class="states-grid" style="margin-bottom:1.5rem">
+  <div class="state-card">
+    <div class="state-name">West Bengal <span class="state-severity sev-high">Critical</span></div>
+    <div class="state-body">Dal Lake tributaries, Hooghly basin and district ponds. Affects over 800,000 fisherfolk.</div>
+  </div>
+  <div class="state-card">
+    <div class="state-name">Assam <span class="state-severity sev-high">Critical</span></div>
+    <div class="state-body">Brahmaputra floodplains & beels. Covers ~180,000 ha. Disrupts inland fisheries significantly.</div>
+  </div>
+  <div class="state-card">
+    <div class="state-name">Bihar <span class="state-severity sev-high">Critical</span></div>
+    <div class="state-body">Ganga floodplains, oxbow lakes & Makhana/Singhara cultivation areas affected.</div>
+  </div>
+  <div class="state-card">
+    <div class="state-name">Kerala <span class="state-severity sev-med">Moderate</span></div>
+    <div class="state-body">Vembanad & Ashtamudi backwaters. Tourism revenue and coconut hinterland canals impacted.</div>
+  </div>
+  <div class="state-card">
+    <div class="state-name">Uttarakhand <span class="state-severity sev-med">Moderate</span></div>
+    <div class="state-body">Haridwar-Rishikesh Ganga banks, Tarai wetlands & irrigation channels.</div>
+  </div>
+  <div class="state-card">
+    <div class="state-name">Odisha <span class="state-severity sev-med">Moderate</span></div>
+    <div class="state-body">Chilika Lake periphery & Mahanadi delta channels. Affects prawn aquaculture.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="section-title">Emerging technology solutions</div>
+<div class="section-sub">A layered stack — detect, harvest, convert — deployed at state and district scale with decentralised community ownership.</div>
+
+<div class="tech-grid">
+  <div class="tech-card tc-teal">
+    <div class="tech-icon ic-teal"><i class="ti ti-satellite" aria-hidden="true"></i></div>
+    <h3>AI-Powered Satellite & Drone Surveillance</h3>
+    <p>Sentinel-2 and ResourceSat-2A imagery processed with deep learning (U-Net / ResNet) to generate weekly infestation maps at 10 m resolution. Drones with multispectral cameras validate ground truth. Real-time alerts pushed to district dashboards.</p>
+    <div><span class="tag tag-teal">ISRO data</span><span class="tag tag-blue">Computer vision</span><span class="tag tag-teal">NDVi mapping</span></div>
+  </div>
+  <div class="tech-card tc-amber">
+    <div class="tech-icon ic-amber"><i class="ti ti-robot" aria-hidden="true"></i></div>
+    <h3>Autonomous Aquatic Harvesting Robots</h3>
+    <p>Solar-powered amphibious robots (1.2 m hull) navigate using GPS + camera-based obstacle avoidance. They cut, collect and transfer biomass to shore barges. Estimated harvest rate: 2.5 tonnes/robot/day. Operates 6–8 hours/day on solar alone.</p>
+    <div><span class="tag tag-amber">Solar autonomous</span><span class="tag tag-amber">GPS navigation</span><span class="tag tag-amber">2.5 T/day</span></div>
+  </div>
+  <div class="tech-card tc-blue">
+    <div class="tech-icon ic-blue"><i class="ti ti-cpu" aria-hidden="true"></i></div>
+    <h3>IoT Water Quality Network</h3>
+    <p>Low-cost LoRaWAN sensor buoys measuring dissolved oxygen, pH, turbidity and temperature. Data fed to a cloud dashboard (IUDX compliant) to predict hyacinth bloom conditions 7–10 days ahead and trigger early harvest dispatch.</p>
+    <div><span class="tag tag-blue">LoRaWAN</span><span class="tag tag-blue">IUDX API</span><span class="tag tag-blue">Predictive alerts</span></div>
+  </div>
+  <div class="tech-card tc-green">
+    <div class="tech-icon ic-green"><i class="ti ti-flame" aria-hidden="true"></i></div>
+    <h3>Biogas & Green Energy Conversion</h3>
+    <p>Harvested biomass (70% moisture) fed into community-level anaerobic digesters (50–200 m³). Each unit produces 50–120 m³ biogas/day — sufficient for 40–80 households. Digestate is pathogen-free organic slurry reusable as fertiliser.</p>
+    <div><span class="tag tag-green">Anaerobic digestion</span><span class="tag tag-green">CBG potential</span><span class="tag tag-green">Zero waste</span></div>
+  </div>
+  <div class="tech-card tc-coral">
+    <div class="tech-icon ic-coral"><i class="ti ti-plant" aria-hidden="true"></i></div>
+    <h3>Biochar & Vermicompost Production</h3>
+    <p>Dried hyacinth thermally converted (pyrolysis, 400–500°C) into biochar — a high-carbon soil amendment that sequesters CO₂ and improves soil water retention. Parallel vermicomposting lines produce Grade-A biofertiliser for smallholder farms.</p>
+    <div><span class="tag tag-coral">Carbon sequestration</span><span class="tag tag-coral">PMFBY eligible</span><span class="tag tag-coral">Soil health</span></div>
+  </div>
+  <div class="tech-card tc-purple">
+    <div class="tech-icon ic-purple"><i class="ti ti-basket" aria-hidden="true"></i></div>
+    <h3>Handicraft Value Chain & SHG Integration</h3>
+    <p>Dried and treated hyacinth stems serve as raw material for handmade baskets, furniture, mats and bags — a ₹1,200 Cr market. Women SHG clusters trained under NRLM receive micro-finance for equipment. E-commerce linkage via ONDC and GeMKart.</p>
+    <div><span class="tag tag-purple">SHG/FPO</span><span class="tag tag-purple">NRLM</span><span class="tag tag-purple">ONDC market</span></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="section-title">Circular economy model</div>
+<div class="section-sub">Every kg of harvested hyacinth is a revenue opportunity — zero landfill, zero burning. Four integrated value streams ensure financial sustainability without relying solely on government grants.</div>
+
+<div class="by-products">
+  <div class="bp-card bp-teal">
+    <i class="ti ti-flame" aria-hidden="true"></i>
+    <div class="bp-title">Biogas / CBG</div>
+    <div class="bp-rev">₹8–12/kg dry mass</div>
+    <div class="bp-desc">Compressed for cylinders or piped to village clusters. SATAT scheme eligible for off-take.</div>
+  </div>
+  <div class="bp-card bp-amber">
+    <i class="ti ti-basket" aria-hidden="true"></i>
+    <div class="bp-title">Handicrafts & Fibre</div>
+    <div class="bp-rev">₹25–60/kg dry stem</div>
+    <div class="bp-desc">Furniture, bags, mats. Highest value stream. GI-tag potential in Assam & Kerala.</div>
+  </div>
+  <div class="bp-card bp-green">
+    <i class="ti ti-leaf" aria-hidden="true"></i>
+    <div class="bp-title">Biochar & Compost</div>
+    <div class="bp-rev">₹6–10/kg</div>
+    <div class="bp-desc">Improves sandy Tarai soils. Reduces chemical fertiliser use by 20–30% in pilot fields.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="section-title">Implementation roadmap</div>
+<div class="section-sub">A phased 4-year national programme anchored to existing MeitY, MoEFCC, NMCG and NHM frameworks — avoiding duplication and leveraging existing Jal Jeevan Mission infrastructure.</div>
+
+<div class="roadmap">
+  <div class="phase" style="position:relative">
+    <div class="phase-connector"></div>
+    <div class="phase-badge pb-1">1</div>
+    <div class="phase-content">
+      <div class="phase-header">
+        <div class="phase-title">Pilot & detection network</div>
+        <div class="phase-time pt-1">Months 1–6</div>
+      </div>
+      <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.6">Deploy IoT buoys and satellite monitoring in 3 pilot districts (one each in Assam, Bihar, Kerala). Baseline infestation mapping. Procure 2 prototype robots per district for field trials.</div>
+      <div class="phase-items">
+        <span class="phase-item">ISRO Bhuvan integration</span>
+        <span class="phase-item">LoRaWAN buoy network</span>
+        <span class="phase-item">District dashboard (NIC)</span>
+        <span class="phase-item">Community sensitisation</span>
+      </div>
+    </div>
+  </div>
+  <div class="phase" style="position:relative">
+    <div class="phase-connector"></div>
+    <div class="phase-badge pb-2">2</div>
+    <div class="phase-content">
+      <div class="phase-header">
+        <div class="phase-title">Harvest & processing infrastructure</div>
+        <div class="phase-time pt-2">Months 7–18</div>
+      </div>
+      <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.6">Scale robot fleet to 10 per district. Establish 2 community biogas units and 1 handicraft processing centre per district under SHG ownership. Integrate with PMFBY and NABARD credit lines.</div>
+      <div class="phase-items">
+        <span class="phase-item">Robot fleet scale-up</span>
+        <span class="phase-item">Biogas digesters</span>
+        <span class="phase-item">SHG training (NRLM)</span>
+        <span class="phase-item">NABARD financing</span>
+        <span class="phase-item">Pyrolysis unit commissioning</span>
+      </div>
+    </div>
+  </div>
+  <div class="phase" style="position:relative">
+    <div class="phase-connector"></div>
+    <div class="phase-badge pb-3">3</div>
+    <div class="phase-content">
+      <div class="phase-header">
+        <div class="phase-title">State rollout & market linkages</div>
+        <div class="phase-time pt-3">Year 2–3</div>
+      </div>
+      <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.6">Expand to 50 districts across 8 states. Activate ONDC/GeM e-commerce channels for handicraft sales. SATAT-registered CBG off-take agreements with IOC/BPCL. Carbon credit registration (UNFCCC Verra).</div>
+      <div class="phase-items">
+        <span class="phase-item">50-district expansion</span>
+        <span class="phase-item">SATAT CBG registration</span>
+        <span class="phase-item">ONDC market linkage</span>
+        <span class="phase-item">Carbon credits (Verra)</span>
+        <span class="phase-item">State nodal agencies</span>
+      </div>
+    </div>
+  </div>
+  <div class="phase">
+    <div class="phase-badge pb-4">4</div>
+    <div class="phase-content">
+      <div class="phase-header">
+        <div class="phase-title">National scale & self-sustaining model</div>
+        <div class="phase-time pt-4">Year 3–5</div>
+      </div>
+      <div style="font-size:12px;color:var(--color-text-secondary);line-height:1.6">200+ districts operational. Model becomes financially self-sustaining through product revenue, carbon credits and CBG sales. Export of Make-in-India harvesting robots to Bangladesh, Myanmar, and African countries facing similar challenges.</div>
+      <div class="phase-items">
+        <span class="phase-item">200+ districts</span>
+        <span class="phase-item">Robot export (Make in India)</span>
+        <span class="phase-item">Self-sustaining revenue</span>
+        <span class="phase-item">Tech transfer to SAARC</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="section-title">Cost & benefit analysis</div>
+<div class="section-sub">Per-district model (approx. 5,000 ha infested area). All figures indicative for Tier-2 district with active fisheries and agriculture. CapEx amortised over 7 years.</div>
+
+<div class="cost-grid">
+  <div class="cost-card">
+    <h4><i class="ti ti-arrow-down-circle" aria-hidden="true" style="color:var(--coral);margin-right:6px"></i>Capital expenditure (per district)</h4>
+    <div class="cost-row"><span class="cost-label">Harvesting robots (×10)</span><span class="cost-value">₹1.2 Cr</span></div>
+    <div class="cost-row"><span class="cost-label">IoT buoy network (×30)</span><span class="cost-value">₹18 L</span></div>
+    <div class="cost-row"><span class="cost-label">Biogas digesters (×2)</span><span class="cost-value">₹40 L</span></div>
+    <div class="cost-row"><span class="cost-label">Pyrolysis unit</span><span class="cost-value">₹25 L</span></div>
+    <div class="cost-row"><span class="cost-label">Handicraft centre</span><span class="cost-value">₹15 L</span></div>
+    <div class="cost-row"><span class="cost-label cost-total">Total CapEx</span><span class="cost-value cost-total">≈ ₹2.0 Cr</span></div>
+  </div>
+  <div class="cost-card">
+    <h4><i class="ti ti-arrow-up-circle" aria-hidden="true" style="color:var(--teal);margin-right:6px"></i>Annual revenue streams (per district)</h4>
+    <div class="cost-row"><span class="cost-label">CBG / biogas sales</span><span class="cost-value">₹32 L</span></div>
+    <div class="cost-row"><span class="cost-label">Handicraft & fibre</span><span class="cost-value">₹55 L</span></div>
+    <div class="cost-row"><span class="cost-label">Biochar / compost</span><span class="cost-value">₹18 L</span></div>
+    <div class="cost-row"><span class="cost-label">Carbon credits (est.)</span><span class="cost-value">₹12 L</span></div>
+    <div class="cost-row"><span class="cost-label">Fishery recovery uplift</span><span class="cost-value">₹28 L</span></div>
+    <div class="cost-row"><span class="cost-label cost-total">Total annual revenue</span><span class="cost-value cost-total">≈ ₹1.45 Cr</span></div>
+  </div>
+</div>
+
+<div style="background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;margin-bottom:1.5rem">
+  <div style="font-size:13px;font-weight:600;margin-bottom:1rem;color:var(--color-text-primary)">Projected impact after 5 years (50-district scale)</div>
+  <div class="benefit-bar-wrap">
+    <div class="bar-label"><span>Infestation area reduced</span><span style="font-weight:600">75%</span></div>
+    <div class="bar-track"><div class="bar-fill bf-teal" style="width:75%"></div></div>
+  </div>
+  <div class="benefit-bar-wrap">
+    <div class="bar-label"><span>Fishery income recovery</span><span style="font-weight:600">60%</span></div>
+    <div class="bar-track"><div class="bar-fill bf-blue" style="width:60%"></div></div>
+  </div>
+  <div class="benefit-bar-wrap">
+    <div class="bar-label"><span>SHG livelihoods created</span><span style="font-weight:600">50,000+</span></div>
+    <div class="bar-track"><div class="bar-fill bf-amber" style="width:83%"></div></div>
+  </div>
+  <div class="benefit-bar-wrap">
+    <div class="bar-label"><span>CO₂ sequestration (tonnes/yr)</span><span style="font-weight:600">120,000 T</span></div>
+    <div class="bar-track"><div class="bar-fill bf-green" style="width:48%"></div></div>
+  </div>
+  <div style="margin-top:1rem;font-size:12px;color:var(--color-text-secondary);display:flex;gap:1.5rem">
+    <span><strong style="color:var(--teal)">ROI breakeven:</strong> ~3.5 years per district</span>
+    <span><strong style="color:var(--amber)">Employment:</strong> 15–20 jobs/district direct</span>
+    <span><strong style="color:var(--blue)">EIRR estimate:</strong> 22–28%</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+<div class="section-title">Funding & governance structure</div>
+<div class="section-sub">Multi-ministry convergence ensures no single ministry bears the full burden. Matching-grant model incentivises state co-investment.</div>
+
+<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-bottom:1.5rem">
+  <div style="background:var(--teal-light);border-radius:var(--border-radius-md);padding:.875rem 1rem">
+    <div style="font-size:12px;font-weight:600;color:var(--teal);margin-bottom:.5rem"><i class="ti ti-building-bank" aria-hidden="true" style="margin-right:4px"></i>Central government (60%)</div>
+    <div style="font-size:11px;color:#085041;line-height:1.6">NMCG (National Mission for Clean Ganga), MoEFCC, MoJS (Jal Shakti), NITI Aayog Mission LiFE. PM-KUSUM for solar robot charging. SATAT for CBG off-take guarantee.</div>
+  </div>
+  <div style="background:var(--amber-light);border-radius:var(--border-radius-md);padding:.875rem 1rem">
+    <div style="font-size:12px;font-weight:600;color:var(--amber);margin-bottom:.5rem"><i class="ti ti-map-pin" aria-hidden="true" style="margin-right:4px"></i>State & district (25%)</div>
+    <div style="font-size:11px;color:#633806;line-height:1.6">State wetland authorities, Fisheries departments, DRDA. Land for processing centres. District collector as nodal authority for convergence with MGNREGS (manual support during peak harvest).</div>
+  </div>
+  <div style="background:var(--blue-light);border-radius:var(--border-radius-md);padding:.875rem 1rem">
+    <div style="font-size:12px;font-weight:600;color:var(--blue);margin-bottom:.5rem"><i class="ti ti-building" aria-hidden="true" style="margin-right:4px"></i>CSR & multilateral (10%)</div>
+    <div style="font-size:11px;color:#0C447C;line-height:1.6">NABARD Rural Infrastructure Fund, World Bank NMCG-II loan tranche, ADB Freshwater Ecosystems. Corporate CSR under Schedule VII (environment). GEF Small Grants Programme.</div>
+  </div>
+  <div style="background:var(--green-light);border-radius:var(--border-radius-md);padding:.875rem 1rem">
+    <div style="font-size:12px;font-weight:600;color:var(--green);margin-bottom:.5rem"><i class="ti ti-users" aria-hidden="true" style="margin-right:4px"></i>Community equity (5%)</div>
+    <div style="font-size:11px;color:#27500A;line-height:1.6">SHG, FPO and gram sabha contribute labour-in-kind. Micro-equity model: communities own 30% of processing units. Profit sharing builds long-term stewardship and reduces vandalism risk.</div>
+  </div>
+</div>
+
+<div class="footer-note">
+  <i class="ti ti-info-circle" aria-hidden="true"></i>
+  <span>This framework aligns with India's National Biodiversity Action Plan, Wetlands (Conservation & Management) Rules 2017, and SDG targets 6.6 (protect water ecosystems) and 15.8 (reduce invasive species impact). Technology indigenisation through IIT/CSIR research partnerships reduces import dependency for robots and sensors within 3 years of programme launch.</span>
+</div>
